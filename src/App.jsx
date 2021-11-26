@@ -1,3 +1,5 @@
+import Counter from "./Components/Counter";
+
 const user = true;
 
 const textColor = {
@@ -20,6 +22,8 @@ const App = () => {
 		<div className="container">
 			<h1 className={textColor.success}>hello</h1>
 			{ user ? <WelcomeGreeting/> : <FarewellGreeting/>}
+
+			<Counter/>
 		</div>
 	)
 }
