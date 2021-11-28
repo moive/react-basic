@@ -1,4 +1,5 @@
-import Counter from "./Components/Counter";
+// import Counter from "./Components/Counter";
+import FormNotControllable from "./Components/FormNotControllable";
 
 const user = true;
 
@@ -23,7 +24,8 @@ const App = () => {
 			<h1 className={textColor.success}>hello</h1>
 			{ user ? <WelcomeGreeting/> : <FarewellGreeting/>}
 
-			<Counter/>
+			{/* <Counter/> */}
+			<FormNotControllable/>
 		</div>
 	)
 }
