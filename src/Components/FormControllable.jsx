@@ -14,10 +14,15 @@ const FormControllable = () => {
     });
 
     const handleChange = e=>{
-        setTodo({
-            ...todo,
+        // setTodo({
+        //     ...todo,
+        //     [e.target.name]: e.target.value
+        // })
+
+        setTodo((old)=>({
+            ...old,
             [e.target.name]: e.target.value
-        })
+        }));
     }
 
     return (
