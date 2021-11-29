@@ -10,19 +10,22 @@ const FormControllable = () => {
     const [todo, setTodo] = useState({
         todoName:'',
         todoDescription:'',
-        todoState:'pending'
+        todoState:'pending',
+        todoCheck: false
     });
 
     const handleChange = e=>{
-        // setTodo({
-        //     ...todo,
-        //     [e.target.name]: e.target.value
-        // })
 
-        setTodo((old)=>({
-            ...old,
-            [e.target.name]: e.target.value
-        }));
+        const {name, value, checked, type} = e.target;
+        setTodo({
+            ...todo,
+            [name]: type === 'checkbox' ? checked : value
+        })
+
+        // setTodo((old)=>({
+        //     ...old,
+        //     [e.target.name]: e.target.value
+        // }));
     }
 
     return (
@@ -50,8 +53,21 @@ const FormControllable = () => {
                     <option value="pending">Pending</option>
                     <option value="completed">Completed</option>
                 </select>
+                <div className="form-check mb-2">
+                    <input
+                        name="todoCheck"
+                        className="form-check-input"
+                        type="checkbox"
+                        id="flexCheckDefault"
+                        checked={todo.todoCheck}
+                        onChange={handleChange}
+                    />
+                    <label className="form-check-label" htmlFor="flexCheckDefault">
+                        Giving priority
+                    </label>
+                </div>
                 <button
-                    className="btn btn-success"
+                    className="btn btn-success mt-3"
                     type="submit"
                 >
                     Add
