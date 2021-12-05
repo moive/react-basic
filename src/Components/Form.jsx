@@ -54,7 +54,7 @@ const Form = () => {
     }
 
     useEffect(() => {
-        setIsDisabled(todo.name !== '' && todo.description !== '' && todo.priority);
+        setIsDisabled(todo.name.trim() && todo.description.trim() && todo.priority);
         // console.log(isDisabled)
     },[todo])
 
