@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 const handleSubmit = e=>{
@@ -14,8 +14,9 @@ const FormControllable = () => {
         todoCheck: false
     });
 
-    const handleChange = e=>{
+    const [isDisabled, setIsDisabled] = useState(true)
 
+    const handleChange = e=>{
         const {name, value, checked, type} = e.target;
         setTodo({
             ...todo,
@@ -27,6 +28,12 @@ const FormControllable = () => {
         //     [e.target.name]: e.target.value
         // }));
     }
+
+    useEffect(() => {
+        setIsDisabled(todo.todoName !== '' && todo.todoDescription !== '' && todo.todoCheck);
+        // console.log(isDisabled)
+    },[todo])
+
 
     return (
         <>
@@ -69,6 +76,7 @@ const FormControllable = () => {
                 <button
                     className="btn btn-success mt-3"
                     type="submit"
+                    disabled={!isDisabled}
                 >
                     Add
                 </button>
