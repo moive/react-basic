@@ -1,20 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2'
 
-
+const customizeError = (e, name)=>{
+    e.target[name].focus();
+    return Swal.fire({
+        title: 'Error!',
+        text: `The ${name === 'priority' ? 'checkbox' : 'field'} ${name} is required`,
+        icon: 'error',
+        confirmButtonText: 'Cool'
+    })
+}
 
 const Form = () => {
     
     const handleSubmit = e=>{
         e.preventDefault();
+        
+        if (!todo.name.trim()) {
+            return customizeError(e, 'name');
+        }
+        if (!todo.description.trim()) {
+            return customizeError(e, 'description');
+        }
+        if (!todo.priority) {
+            return customizeError(e, 'priority')
+        }
+        
         console.log(todo)
+    };
+
+    const initialState = {
+        name:'',
+        description:'',
+        status:'pending',
+        priority: false
     }
 
-    const [todo, setTodo] = useState({
-        todoName:'',
-        todoDescription:'',
-        todoState:'pending',
-        todoCheck: false
-    });
+    const [todo, setTodo] = useState(initialState);
 
     const [isDisabled, setIsDisabled] = useState(true)
 
@@ -32,7 +54,7 @@ const Form = () => {
     }
 
     useEffect(() => {
-        setIsDisabled(todo.todoName !== '' && todo.todoDescription !== '' && todo.todoCheck);
+        setIsDisabled(todo.name !== '' && todo.description !== '' && todo.priority);
         // console.log(isDisabled)
     },[todo])
 
@@ -43,19 +65,19 @@ const Form = () => {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name="todoName"
+                    name="name"
                     placeholder="Enter todo name"
                     className="form-control mb-2"
                     onChange={handleChange}
                 />
                 <textarea
-                    name="todoDescription"
+                    name="description"
                     placeholder="Enter todo description"
                     className="form-control mb-2"
                     onChange={handleChange}
                 />
                 <select
-                    name="todoState"
+                    name="status"
                     className="form-select mb-2"
                     onChange={handleChange}
                 >
@@ -64,11 +86,11 @@ const Form = () => {
                 </select>
                 <div className="form-check mb-2">
                     <input
-                        name="todoCheck"
+                        name="priority"
                         className="form-check-input"
                         type="checkbox"
                         id="flexCheckDefault"
-                        checked={todo.todoCheck}
+                        checked={todo.priority}
                         onChange={handleChange}
                     />
                     <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -78,7 +100,7 @@ const Form = () => {
                 <button
                     className="btn btn-success mt-3"
                     type="submit"
-                    disabled={!isDisabled}
+                    // disabled={!isDisabled}
                 >
                     Add
                 </button>
