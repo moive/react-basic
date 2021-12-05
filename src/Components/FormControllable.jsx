@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
 
-const handleSubmit = e=>{
-    e.preventDefault();
-}
 
 const FormControllable = () => {
+    
+    const handleSubmit = e=>{
+        e.preventDefault();
+        console.log(todo)
+    }
 
     const [todo, setTodo] = useState({
         todoName:'',
