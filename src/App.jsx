@@ -1,7 +1,7 @@
 // import Counter from "./Components/Counter";
 // import FormNotControllable from "./Components/FormNotControllable";
 
-import FormControllable from "./Components/FormControllable";
+import Form from "./Components/Form";
 
 const user = true;
 
@@ -28,7 +28,7 @@ const App = () => {
 
 			{/* <Counter/> */}
 			{/* <FormNotControllable/> */}
-			<FormControllable/>
+			<Form/>
 		</div>
 	)
 }

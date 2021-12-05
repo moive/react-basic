@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 
 
-const FormControllable = () => {
+const Form = () => {
     
     const handleSubmit = e=>{
         e.preventDefault();
@@ -87,4 +87,4 @@ const FormControllable = () => {
     )
 }
 
-export default FormControllable
+export default Form
