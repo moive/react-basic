@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2'
 
-const customizeError = (e, name)=>{
+const customizeError = (e, name, title='Error!')=>{
     e.target[name].focus();
     return Swal.fire({
-        title: 'Error!',
+        title,
         text: `The ${name === 'priority' ? 'checkbox' : 'field'} ${name} is required`,
         icon: 'error',
-        confirmButtonText: 'Cool'
-    })
+        confirmButtonText: 'OK'
+    });
 }
 
 const Form = () => {
@@ -26,6 +26,13 @@ const Form = () => {
             return customizeError(e, 'priority')
         }
         
+        Swal.fire({
+            title:'Éxito!',
+            text: 'successful registration',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+
         console.log(todo)
     };
 
