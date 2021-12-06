@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { v4 as uuid } from 'uuid';
 
 const customizeError = (e, name, title='Error!')=>{
     e.target[name].focus();
@@ -11,7 +12,7 @@ const customizeError = (e, name, title='Error!')=>{
     });
 }
 
-const Form = () => {
+const Form = ({addTodo}) => {
     
     const handleSubmit = e=>{
         e.preventDefault();
@@ -32,6 +33,14 @@ const Form = () => {
             icon: 'success',
             confirmButtonText: 'OK'
         });
+
+        addTodo({
+            name:todo.name,
+            description: todo.description,
+            status: todo.status === 'pending' ? false : true,
+            priority: todo.priority,
+            id: uuid()
+        })
 
         console.log(todo)
     };
