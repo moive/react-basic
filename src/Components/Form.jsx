@@ -43,6 +43,8 @@ const Form = ({addTodo}) => {
         })
 
         console.log(todo)
+
+        setTodo(initialState);
     };
 
     const initialState = {
@@ -85,17 +87,20 @@ const Form = ({addTodo}) => {
                     placeholder="Enter todo name"
                     className="form-control mb-2"
                     onChange={handleChange}
+                    value={todo.name}
                 />
                 <textarea
                     name="description"
                     placeholder="Enter todo description"
                     className="form-control mb-2"
                     onChange={handleChange}
+                    value={todo.description}
                 />
                 <select
                     name="status"
                     className="form-select mb-2"
                     onChange={handleChange}
+                    value={todo.status}
                 >
                     <option value="pending">Pending</option>
                     <option value="completed">Completed</option>
