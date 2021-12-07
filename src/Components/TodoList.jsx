@@ -14,6 +14,12 @@ const TodoList = () => {
         setTodos((old)=>old.filter(item=>item.id !== id));
     };
 
+    const editTodo = (id)=>{
+        const edit = todos.map(item => item.id === id ? {...item, status: !item.status} : item);
+
+        setTodos(edit);
+    }
+
     return (
         <>
             <Form addTodo={addTodo} />
@@ -24,6 +30,7 @@ const TodoList = () => {
                             key={item.id}
                             todo={item}
                             deleteTodo={deleteTodo}
+                            editTodo={editTodo}
                         />
                     ))
                 }

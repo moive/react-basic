@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Todo = ({todo, deleteTodo}) => {
+const Todo = ({todo, deleteTodo, editTodo}) => {
     const {id, name, description, priority, status} = todo;
     return (
         <>
@@ -13,7 +13,10 @@ const Todo = ({todo, deleteTodo}) => {
                             className="btn btn-sm btn-danger me-1"
                             onClick={()=>deleteTodo(id)}
                         >Delete</div>
-                        <div className="btn btn-sm btn-warning me-1">Edit</div>
+                        <div
+                            className="btn btn-sm btn-warning me-1"
+                            onClick={()=>editTodo(id)}
+                        >Edit</div>
                     </div>
                 </div>
                 <span className="badge bg-primary rounded-pill">{priority && "priority"}</span>
