@@ -1,9 +1,21 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react/cjs/react.development';
 import Form from './Form'
 import Todo from './Todo';
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
+
+    useEffect(()=>{
+        let data = localStorage.getItem("todos");
+        if(data){
+            setTodos(JSON.parse(data));
+        }
+    },[]);
+
+    useEffect(()=>{
+        localStorage.setItem("todos", JSON.stringify(todos));
+    },[todos]);
 
     const addTodo = (todo)=>{
         setTodos((old)=> [...old, todo]);
@@ -19,6 +31,8 @@ const TodoList = () => {
 
         setTodos(edit);
     }
+
+    
 
     return (
         <>
