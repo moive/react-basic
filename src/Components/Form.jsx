@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { v4 as uuid } from 'uuid';
+import { useForm } from '../hooks/useForm';
 
-const customizeError = (e, name, title='Error!')=>{
-    e.target[name].focus();
-    return Swal.fire({
-        title,
-        text: `The ${name === 'priority' ? 'checkbox' : 'field'} ${name} is required`,
-        icon: 'error',
-        confirmButtonText: 'OK'
-    });
-}
 
 const Form = ({addTodo}) => {
     
+    const initialState = {
+        name:'',
+        description:'',
+        status:'pending',
+        priority: false
+    }
+
+    const [inputs, handleChange, reset, customizeError] = useForm(initialState);
+
+    const {name, description, status, priority} = inputs;
+
     const handleSubmit = e=>{
         e.preventDefault();
         
-        if (!todo.name.trim()) {
+        if (!name.trim()) {
             return customizeError(e, 'name');
         }
-        if (!todo.description.trim()) {
+        if (!description.trim()) {
             return customizeError(e, 'description');
         }
-        if (!todo.priority) {
+        if (!priority) {
             return customizeError(e, 'priority')
         }
         
@@ -35,46 +38,26 @@ const Form = ({addTodo}) => {
         });
 
         addTodo({
-            name:todo.name,
-            description: todo.description,
-            status: todo.status === 'pending' ? false : true,
-            priority: todo.priority,
+            name:name,
+            description: description,
+            status: status === 'pending' ? false : true,
+            priority: priority,
             id: uuid()
         })
 
-        console.log(todo)
+        // console.log(inputs)
 
-        setTodo(initialState);
+        reset(initialState);
     };
-
-    const initialState = {
-        name:'',
-        description:'',
-        status:'pending',
-        priority: false
-    }
-
-    const [todo, setTodo] = useState(initialState);
 
     const [isDisabled, setIsDisabled] = useState(true)
 
-    const handleChange = e=>{
-        const {name, value, checked, type} = e.target;
-        setTodo({
-            ...todo,
-            [name]: type === 'checkbox' ? checked : value
-        })
-
-        // setTodo((old)=>({
-        //     ...old,
-        //     [e.target.name]: e.target.value
-        // }));
-    }
+    //
 
     useEffect(() => {
-        setIsDisabled(todo.name.trim() && todo.description.trim() && todo.priority);
+        setIsDisabled(name.trim() && description.trim() && priority);
         // console.log(isDisabled)
-    },[todo])
+    },[inputs])
 
 
     return (
@@ -87,20 +70,20 @@ const Form = ({addTodo}) => {
                     placeholder="Enter todo name"
                     className="form-control mb-2"
                     onChange={handleChange}
-                    value={todo.name}
+                    value={name}
                 />
                 <textarea
                     name="description"
                     placeholder="Enter todo description"
                     className="form-control mb-2"
                     onChange={handleChange}
-                    value={todo.description}
+                    value={description}
                 />
                 <select
                     name="status"
                     className="form-select mb-2"
                     onChange={handleChange}
-                    value={todo.status}
+                    value={status}
                 >
                     <option value="pending">Pending</option>
                     <option value="completed">Completed</option>
@@ -111,7 +94,7 @@ const Form = ({addTodo}) => {
                         className="form-check-input"
                         type="checkbox"
                         id="flexCheckDefault"
-                        checked={todo.priority}
+                        checked={priority}
                         onChange={handleChange}
                     />
                     <label className="form-check-label" htmlFor="flexCheckDefault">
