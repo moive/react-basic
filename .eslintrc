@@ -1,0 +1,17 @@
+{
+    "eslintConfig": {
+      "extends": ["react-app", "shared-config"],
+      "parser": "@typescript-eslint/parser",
+      "rules": {
+        "additional-rule": "warn"
+      },
+      "overrides": [
+        {
+          "files": ["**/*.ts?(x)"],
+          "rules": {
+            "additional-typescript-only-rule": "warn"
+          }
+        }
+      ]
+    }
+  }
