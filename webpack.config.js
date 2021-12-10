@@ -103,6 +103,8 @@ let settings = {
         }),
     ],
     optimization: {
+        // minimize: true,
+		// minimizer: [new TerserPlugin()],
         splitChunks: {
             cacheGroups: {
                 vendor: {
