@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import RickAndMorty from './Components/RickAndMorty';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RickAndMorty />
   </React.StrictMode>,
   document.getElementById('root')
 );
