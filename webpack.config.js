@@ -3,8 +3,10 @@ const ProgressPlugin = require("progress-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 
 let Env = "local";
+let publicUrl = '';
 
 let settings = {
     entry: {
@@ -92,6 +94,9 @@ let settings = {
             chunks: ["app"],
             template: "./src/index.html",
             //filename:"index.html"
+        }),
+        new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+            PUBLIC_URL: publicUrl,
         }),
         new MiniCssExtractPlugin({
             filename: "css/[name].css",
