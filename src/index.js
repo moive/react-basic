@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import RickAndMorty from './Components/RickAndMorty';
+import RickAndMorty from './Components/RickMorty/RickAndMorty';
 
 ReactDOM.render(
   <React.StrictMode>
