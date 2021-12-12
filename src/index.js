@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import RickAndMorty from './Components/RickMorty/RickAndMorty';
+import { BrowserRouter } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RickAndMorty />
+    <BrowserRouter>
+      <RickAndMorty />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root') 
 );
