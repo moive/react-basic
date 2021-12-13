@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import RickAndMorty from './Components/RickMorty/RickAndMorty';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import App from './App';
+import App from './Routes/App';
 import Home from './Components/Home';
-import Contact from './Components/Contact';
-import Blog from './Components/Blog';
-import NotFound from './Components/NotFound';
+import Contact from './Routes/Contact';
+import Blog from './Routes/Blog';
+import RickAndMorty from './Routes/RickAndMorty';
+import NotFound from './Routes/NotFound';
 
 ReactDOM.render(
 	<React.StrictMode>
