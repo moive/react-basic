@@ -17,8 +17,8 @@ ReactDOM.render(
 			<Routes>
 				<Route path="/" element={<App/>}>
 					<Route index element={<Home />} />
-					<Route path="RickAndMorty" element={<RickAndMorty />} />
-					<Route path="Contact" element={<Contact />} />
+					<Route path="/RickAndMorty" element={<RickAndMorty />} />
+					<Route path="/Contact" element={<Contact />} />
 					
 				</Route>
 			</Routes>

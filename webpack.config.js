@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const paths = require('./paths');
 
 let Env = "local";
 let publicUrl = '';
@@ -15,6 +16,7 @@ let settings = {
     output: {
         path: path.join(__dirname, "build"),
         filename: "js/[name].js",
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -66,6 +68,7 @@ let settings = {
         // },
         compress: true,
         port: 9000,
+        historyApiFallback: true,
     },
     resolve: {
         enforceExtension: false,
