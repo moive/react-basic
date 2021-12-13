@@ -3,16 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import RickAndMorty from './Components/RickMorty/RickAndMorty';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from './Components/NavBar';
+
+import App from './App';
+import Home from './Components/Home';
+import Contact from './Components/Contact';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<NavBar/>
-			<RickAndMorty />
+			<Routes>
+				<Route path="/" element={<App/>}>
+					<Route index element={<Home />} />
+					<Route path="RickAndMorty" element={<RickAndMorty />} />
+					<Route path="Contact" element={<Contact />} />
+					
+				</Route>
+			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById('root') 

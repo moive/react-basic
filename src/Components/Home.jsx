@@ -1,8 +1,7 @@
 import React from 'react';
 // import Counter from "./Components/Counter";
-// import FormNotControllable from "./Components/FormNotControllable";
 
-import TodoList from "./Components/TodoList";
+import TodoList from "../Components/TodoList";
 
 const user = true;
 
@@ -28,7 +27,7 @@ const Home = () => {
 			{ user ? <WelcomeGreeting/> : <FarewellGreeting/>}
 
 			{/* <Counter/> */}
-			{/* <FormNotControllable/> */}
+			
 			<TodoList/>
         </>
     )

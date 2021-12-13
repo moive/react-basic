@@ -1,11 +1,15 @@
-import Home from "./Components/Home"
+import NavBar from './Components/NavBar';
+import Home from "./Components/Home";
 
 const App = () => {
 	return (
-		<div className="container">
-			<h1>app</h1>
-			{/* <Home/> */}
-		</div>
+		<>
+			<NavBar/>
+			<div className="container">
+				<h1>app</h1>
+				{/* <Home/> */}
+			</div>
+		</>
 	)
 }
 
