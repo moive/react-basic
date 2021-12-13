@@ -12,6 +12,7 @@ import Contact from './Routes/Contact';
 import Blog from './Routes/Blog';
 import RickAndMorty from './Routes/RickAndMorty';
 import NotFound from './Routes/NotFound';
+import Post from './Routes/Post';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -19,9 +20,10 @@ ReactDOM.render(
 			<Routes>
 				<Route path="/" element={<App/>}>
 					<Route index element={<Home />} />
-					<Route path="/Blog" element={<Blog />} />
-					<Route path="/RickAndMorty" element={<RickAndMorty />} />
-					<Route path="/Contact" element={<Contact />} />
+					<Route path="Blog" element={<Blog />} />
+					<Route path="Blog/:id" element={<Post />} />
+					<Route path="RickAndMorty" element={<RickAndMorty />} />
+					<Route path="Contact" element={<Contact />} />
 					<Route path="*" element={<NotFound />} />
 					
 				</Route>
