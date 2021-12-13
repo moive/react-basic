@@ -10,6 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import Home from './Components/Home';
 import Contact from './Components/Contact';
+import Blog from './Components/Blog';
+import NotFound from './Components/NotFound';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -17,8 +19,10 @@ ReactDOM.render(
 			<Routes>
 				<Route path="/" element={<App/>}>
 					<Route index element={<Home />} />
+					<Route path="/Blog" element={<Blog />} />
 					<Route path="/RickAndMorty" element={<RickAndMorty />} />
 					<Route path="/Contact" element={<Contact />} />
+					<Route path="*" element={<NotFound />} />
 					
 				</Route>
 			</Routes>
