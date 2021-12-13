@@ -6,14 +6,16 @@ import RickAndMorty from './Components/RickMorty/RickAndMorty';
 import { BrowserRouter } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './Components/NavBar';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <RickAndMorty />
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root') 
+	<React.StrictMode>
+		<BrowserRouter>
+			<NavBar/>
+			<RickAndMorty />
+		</BrowserRouter>
+	</React.StrictMode>,
+	document.getElementById('root') 
 );
 
 // If you want to start measuring performance in your app, pass a function
