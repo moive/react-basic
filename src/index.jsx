@@ -13,21 +13,32 @@ import Blog from './Routes/Blog';
 import RickAndMorty from './Routes/RickAndMorty';
 import NotFound from './Routes/NotFound';
 import Post from './Routes/Post';
+import UserProvider from './context/UserProvider';
+import Dashboard from './Routes/Dashboard';
+import RequireAuth from './Components/RequireAuth';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<App/>}>
-					<Route index element={<Home />} />
-					<Route path="Blog" element={<Blog />} />
-					<Route path="Blog/:id" element={<Post />} />
-					<Route path="RickAndMorty" element={<RickAndMorty />} />
-					<Route path="Contact" element={<Contact />} />
-					<Route path="*" element={<NotFound />} />
-					
-				</Route>
-			</Routes>
+			<UserProvider>
+				<Routes>
+					<Route path="/" element={<App/>}>
+						<Route index element={<Home />} />
+						<Route path="Blog" element={<Blog />} />
+						<Route path="Blog" element={<Blog />} />
+						<Route path="Blog/:id" element={<Post />} />
+						<Route path="RickAndMorty" element={<RickAndMorty />} />
+						<Route path="Contact" element={<Contact />} />
+						<Route path="Dashboard" element={
+							<RequireAuth>
+								<Dashboard />
+							</RequireAuth>
+						} />
+						<Route path="*" element={<NotFound />} />
+						
+					</Route>
+				</Routes>
+			</UserProvider>
 		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById('root') 
